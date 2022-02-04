@@ -21,7 +21,7 @@ OBJ_PATH    = objects
 # SOURCES #
 SRC =   main.c  declare_struct.c start_thread.c
 
-SRC_INCLUDE = ft_atoi.c ft_calloc.c
+SRC_INCLUDE = ft_atoi.c ft_calloc.c ft_count_forks.c
 
 
 # RULES #

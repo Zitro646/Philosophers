@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_count_forks.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/02 15:08:16 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/02/04 17:51:27 by mortiz-d         ###   ########.fr       */
+/*   Created: 2022/02/04 13:22:47 by mortiz-d          #+#    #+#             */
+/*   Updated: 2022/02/04 13:30:23 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../philo.h"
 
-//gcc main -pthread
-
-int	main(int argc, char **argv)
+int	ft_count_forks(pthread_mutex_t *list)
 {
-	t_table	data;
+	int	i;
 
-	if (argc < 5 || argc > 6)
+	i = 0;
+	if (list != 0)
 	{
-		printf("No se han introducido los datos correctamente\n");
-		return (0);
+		while (&list[i] != 0)
+		{
+			i++;
+			printf("Cuenta %i \n",i);
+		}
 	}
-	printf("declaramos los hilos\n");
-	data = declare_table(argc, argv);
-	printf("Empezamos los hilos\n");
-	start_thread(data);
+	return (i);
 }
