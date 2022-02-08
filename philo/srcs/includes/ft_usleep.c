@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_usleep.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/02 15:08:16 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/02/08 18:17:56 by mortiz-d         ###   ########.fr       */
+/*   Created: 2022/02/07 10:35:34 by mortiz-d          #+#    #+#             */
+/*   Updated: 2022/02/08 15:36:13 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philo.h"
+#include "../philo.h"
 
-//gcc main -pthread
-
-int	main(int argc, char **argv)
+void	ft_usleep(useconds_t time)
 {
-	t_philo	*data;
+	useconds_t	start;
+	useconds_t	mytime;
 
-	if (argc < 5 || argc > 6)
+	start = ft_get_time();
+	mytime = ft_get_time();
+	while ((mytime - start) < time)
 	{
-		printf("No se han introducido los datos correctamente\n");
-		return (0);
+		usleep(10);
+		mytime = ft_get_time();
 	}
-	printf("declaramos los hilos\n");
-	data = declare_struct(argc, argv);
-	printf("Empezamos los hilos\n");
-	start_thread(data);
 }

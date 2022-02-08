@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 15:07:49 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/02/04 17:49:07 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/02/08 18:15:41 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,30 +18,37 @@
 # include <unistd.h>
 # include <sys/time.h>
 
+typedef struct table
+{
+	int				alive;
+	int				number_of_philosophers;
+	int				number_of_times_must_eat;
+	useconds_t		time_to_die;
+	useconds_t		time_to_eat;
+	useconds_t		time_to_sleep;
+
+}t_table;
+
 typedef struct philo
 {
 	pthread_t		id_threats;
 	int				id;
-	int				number_of_philosophers;
-	int				time_to_die;
-	int				time_to_eat;
-	int				time_to_sleep;
-	int				number_of_times_must_eat;
-	pthread_mutex_t	*forks;
+	t_table			*table;
+	pthread_mutex_t	*r_fork;
+	pthread_mutex_t	*l_fork;
+	useconds_t		time_start;
+	useconds_t		time_now;
+	useconds_t		time_last_meal;
 }t_philo;
 
-typedef struct table
-{
-	t_philo		*philosophers;
-	int			number_of_philosophers;
+void		*ft_calloc(size_t count, size_t size);
+int			ft_atoi(const char *str);
+int			ft_count_forks(pthread_mutex_t *list);
+void		ft_usleep(useconds_t time);
+useconds_t	ft_get_time(void);
 
-}t_table;
-
-void	*ft_calloc(size_t count, size_t size);
-int		ft_atoi(const char *str);
-int		ft_count_forks(pthread_mutex_t *list);
-
-t_table	declare_table(int argc, char **argv);
-void	start_thread(t_table data);
-
+t_philo		*declare_struct(int argc, char **argv);
+void		start_thread(t_philo *data);
+void		*metodo_filosofo_impares(void *arg);
+void		*metodo_filosofo_pares(void *arg);
 #endif
