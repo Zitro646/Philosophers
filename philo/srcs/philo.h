@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 15:07:49 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/02/08 18:15:41 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/02/09 13:49:44 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct table
 	useconds_t		time_to_die;
 	useconds_t		time_to_eat;
 	useconds_t		time_to_sleep;
+	pthread_mutex_t	*forks;
 
 }t_table;
 
@@ -49,6 +50,6 @@ useconds_t	ft_get_time(void);
 
 t_philo		*declare_struct(int argc, char **argv);
 void		start_thread(t_philo *data);
-void		*metodo_filosofo_impares(void *arg);
-void		*metodo_filosofo_pares(void *arg);
+void		*metodo_filosofo(void *arg);
+void		leaks_control(t_philo *data);
 #endif

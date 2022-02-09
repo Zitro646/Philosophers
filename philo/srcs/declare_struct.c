@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 15:41:13 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/02/08 18:08:23 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/02/09 14:52:02 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ t_philo	*declare_philos(int n_philos, t_table *table)
 
 	i = -1;
 	fork = declare_forks(n_philos);
+	table->forks = fork;
 	philo = ft_calloc(sizeof(t_philo), n_philos);
 	while (++i < n_philos)
 	{
@@ -43,7 +44,7 @@ t_philo	*declare_philos(int n_philos, t_table *table)
 		else
 			philo[i].l_fork = &fork[i - 1];
 		philo[i].r_fork = &fork[i];
-		philo[i].id = i;
+		philo[i].id = i + 1;
 		philo[i].table = table;
 	}
 	//printf("Valor vivo : %i", *(philo[0].alive));
@@ -72,6 +73,7 @@ t_philo	*declare_struct(int argc, char **argv)
 	t_philo	*philos;
 
 	table = declare_table(argc, argv);
+	printf("Tabla");
 	philos = declare_philos(table[0].number_of_philosophers, table);
 	return (philos);
 }

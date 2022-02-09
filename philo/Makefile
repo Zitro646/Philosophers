@@ -19,7 +19,7 @@ INC_PATH    = includes -pthread
 OBJ_PATH    = objects
 
 # SOURCES #
-SRC =   main.c  declare_struct.c start_thread.c thread_method.c
+SRC =   main.c  declare_struct.c start_thread.c thread_method.c leaks_control.c
 
 SRC_INCLUDE = ft_atoi.c ft_calloc.c ft_count_forks.c ft_usleep.c ft_get_time.c
 
