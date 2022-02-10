@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 15:08:16 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/02/09 14:52:19 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/02/10 17:23:21 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ int	main(int argc, char **argv)
 	data = declare_struct(argc, argv);
 	printf("Empezamos los hilos\n");
 	start_thread(data);
+	printf("Terminamos con los hilos\n");
 	leaks_control(data);
 }

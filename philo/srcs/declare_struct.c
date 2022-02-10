@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 15:41:13 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/02/09 14:52:02 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/02/10 17:21:31 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ t_philo	*declare_philos(int n_philos, t_table *table)
 		philo[i].r_fork = &fork[i];
 		philo[i].id = i + 1;
 		philo[i].table = table;
+		philo[i].times_has_eaten = 0;
 	}
-	//printf("Valor vivo : %i", *(philo[0].alive));
 	return (philo);
 }
 
