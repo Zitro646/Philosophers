@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 10:31:48 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/02/09 19:06:24 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/02/10 13:34:20 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	eat_pairs(t_philo *philo)
 	if (check_alive(philo))
 	{
 		printf("%u - El filosofo %i empieza a comer\n", \
-			(philo->time_now - philo->time_start), philo->id);
+			(philo->time_now - philo->table->time_start), philo->id);
 		philo->time_last_meal = philo->time_now;
 	}
 	else
@@ -51,7 +51,7 @@ void	eat_odds(t_philo *philo)
 	if (check_alive(philo))
 	{
 		printf("%u - El filosofo %i empieza a comer\n", \
-			(philo->time_now - philo->time_start), philo->id);
+			(philo->time_now - philo->table->time_start), philo->id);
 		philo->time_last_meal = philo->time_now;
 	}
 	else
@@ -66,8 +66,7 @@ void	*metodo_filosofo(void *arg)
 	t_philo			*philo;
 
 	philo = (t_philo *)arg;
-	philo->time_start = ft_get_time();
-	philo->time_last_meal = philo->time_start;
+	philo->time_last_meal = philo->table->time_start;
 	while (check_alive(philo))
 	{
 		if (philo->id % 2 == 0)

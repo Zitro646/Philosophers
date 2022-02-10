@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 15:07:49 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/02/09 13:49:44 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/02/10 13:10:52 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct table
 	int				alive;
 	int				number_of_philosophers;
 	int				number_of_times_must_eat;
+	useconds_t		time_start;
 	useconds_t		time_to_die;
 	useconds_t		time_to_eat;
 	useconds_t		time_to_sleep;
@@ -37,7 +38,6 @@ typedef struct philo
 	t_table			*table;
 	pthread_mutex_t	*r_fork;
 	pthread_mutex_t	*l_fork;
-	useconds_t		time_start;
 	useconds_t		time_now;
 	useconds_t		time_last_meal;
 }t_philo;
