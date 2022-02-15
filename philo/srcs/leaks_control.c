@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 13:02:37 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/02/09 14:52:56 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/02/15 13:33:29 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	leaks_control(t_philo *data)
 	max = data->table->number_of_philosophers;
 	table = data->table;
 	i = 0;
-	//printf("Liberamos los forks : %p\n", table->forks);
 	free(table->forks);
-	//printf("Liberamos la mesa : %p\n", table);
+	free(table->print);
+	free(table->live);
+	free(table->meal_check);
 	free(table);
-	//printf("Liberamos los filosofos : %p\n", data);
 	while (i < max)
 	{
 		pthread_mutex_destroy(data[i].r_fork);

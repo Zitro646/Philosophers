@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 15:07:49 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/02/10 16:58:25 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/02/15 14:55:50 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,16 @@ typedef struct table
 	useconds_t		time_to_eat;
 	useconds_t		time_to_sleep;
 	pthread_mutex_t	*forks;
+	pthread_mutex_t	*print;
+	pthread_mutex_t	*meal_check;
+	pthread_mutex_t	*live;
 
 }t_table;
 
 typedef struct philo
 {
 	pthread_t		id_threats;
+	pthread_t		id_live;
 	int				id;
 	t_table			*table;
 	pthread_mutex_t	*r_fork;
@@ -46,12 +50,15 @@ typedef struct philo
 
 void		*ft_calloc(size_t count, size_t size);
 int			ft_atoi(const char *str);
-int			ft_count_forks(pthread_mutex_t *list);
 void		ft_usleep(useconds_t time);
 useconds_t	ft_get_time(void);
 
+void		print_order(t_philo *philo, char *command, useconds_t time);
 t_philo		*declare_struct(int argc, char **argv);
 void		start_thread(t_philo *data);
 void		*metodo_filosofo(void *arg);
+int			everybody_ate(t_philo	*data);
+int			check_keep_eating(t_philo *philo);
 void		leaks_control(t_philo *data);
+int			error_control(int argc, char **argv);
 #endif
