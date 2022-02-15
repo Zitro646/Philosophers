@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 10:31:48 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/02/15 16:26:19 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/02/15 19:16:06 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ void	print_order(t_philo *philo, char *command, useconds_t time)
 	pthread_mutex_lock(philo->table->print);
 	if (philo->table->alive)
 	{
-		printf ("%u - ", time);
-		printf ("Philisopher %i ", philo->id);
+		printf ("%u ", time);
+		printf ("%i ", philo->id);
 		printf ("%s\n", command);
 	}
 	pthread_mutex_unlock(philo->table->print);
@@ -41,10 +41,10 @@ int	check_keep_eating(t_philo *philo)
 void	eat(t_philo *philo)
 {
 	pthread_mutex_lock(philo->l_fork);
-	print_order(philo, "has taken a fork", \
+	print_order(philo, "has taken a fork",
 		time_diff(ft_get_time(), philo->table->time_start));
 	pthread_mutex_lock(philo->r_fork);
-	print_order(philo, "has taken a fork", \
+	print_order(philo, "has taken a fork",
 		time_diff(ft_get_time(), philo->table->time_start));
 	pthread_mutex_lock(philo->table->meal_check);
 	philo->time_last_meal = ft_get_time();
@@ -64,16 +64,16 @@ void	*metodo_filosofo(void *arg)
 	philo = (t_philo *)arg;
 	philo->time_last_meal = philo->table->time_start;
 	if (philo->id % 2 == 0)
-	 	usleep(210);
+		usleep(210);
 	while (philo->table->alive)
 	{
 		if (philo->l_fork != philo->r_fork)
 		{
 			eat(philo);
-			print_order(philo, "starts sleeping", \
+			print_order(philo, "is sleeping", \
 				time_diff(ft_get_time(), philo->table->time_start));
 			ft_usleep(philo->table->time_to_sleep);
-			print_order(philo, "starts thinking", \
+			print_order(philo, "is thinking", \
 				time_diff(ft_get_time(), philo->table->time_start));
 			if (check_keep_eating(philo) != 1)
 				break ;

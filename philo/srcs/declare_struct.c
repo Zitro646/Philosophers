@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 15:41:13 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/02/15 13:33:17 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/02/15 18:52:54 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ t_table	*declare_table(int argc, char **argv)
 	table[0].time_to_eat = ft_atoi(argv[3]);
 	table[0].time_to_sleep = ft_atoi(argv[4]);
 	table[0].number_of_times_must_eat = -1;
+	table[0].all_eaten = 0;
 	if (argc == 6)
 		table[0].number_of_times_must_eat = ft_atoi(argv[5]);
 	return (table);

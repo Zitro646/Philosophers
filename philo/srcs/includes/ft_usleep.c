@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 10:35:34 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/02/08 15:36:13 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/02/15 18:24:51 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_usleep(useconds_t time)
 	mytime = ft_get_time();
 	while ((mytime - start) < time)
 	{
-		usleep(10);
+		usleep(500);
 		mytime = ft_get_time();
 	}
 }
