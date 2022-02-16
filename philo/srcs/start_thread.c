@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 15:46:11 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/02/15 19:15:46 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/02/16 14:58:32 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	start_thread(t_philo *data)
 			metodo_filosofo, &data[i]);
 		i++;
 	}
-	ft_usleep(1);
+	ft_usleep(1, data->table);
 	monitor(data);
 	i = 0;
 	while (i < data->table->number_of_philosophers)

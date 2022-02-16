@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 15:07:49 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/02/15 14:55:50 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/02/16 14:59:53 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ typedef struct philo
 
 void		*ft_calloc(size_t count, size_t size);
 int			ft_atoi(const char *str);
-void		ft_usleep(useconds_t time);
+void		ft_usleep(useconds_t time, t_table *table);
 useconds_t	ft_get_time(void);
 
 void		print_order(t_philo *philo, char *command, useconds_t time);

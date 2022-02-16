@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 10:31:48 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/02/15 19:16:06 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/02/16 15:00:31 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	eat(t_philo *philo)
 	print_order(philo, "is eating", \
 		time_diff(ft_get_time(), philo->table->time_start));
 	pthread_mutex_unlock(philo->table->meal_check);
-	ft_usleep(philo->table->time_to_eat);
+	ft_usleep(philo->table->time_to_eat, philo->table);
 	pthread_mutex_unlock(philo->l_fork);
 	pthread_mutex_unlock(philo->r_fork);
 	philo->times_has_eaten++;
@@ -72,7 +72,7 @@ void	*metodo_filosofo(void *arg)
 			eat(philo);
 			print_order(philo, "is sleeping", \
 				time_diff(ft_get_time(), philo->table->time_start));
-			ft_usleep(philo->table->time_to_sleep);
+			ft_usleep(philo->table->time_to_sleep, philo->table);
 			print_order(philo, "is thinking", \
 				time_diff(ft_get_time(), philo->table->time_start));
 			if (check_keep_eating(philo) != 1)
