@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/07 10:31:48 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/02/16 15:00:31 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/03/14 13:53:24 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	print_order(t_philo *philo, char *command, useconds_t time)
 	pthread_mutex_lock(philo->table->print);
 	if (philo->table->alive)
 	{
-		printf ("%u ", time);
+		printf ("[%u] ", time);
 		printf ("%i ", philo->id);
 		printf ("%s\n", command);
 	}
@@ -46,11 +46,11 @@ void	eat(t_philo *philo)
 	pthread_mutex_lock(philo->r_fork);
 	print_order(philo, "has taken a fork",
 		time_diff(ft_get_time(), philo->table->time_start));
-	pthread_mutex_lock(philo->table->meal_check);
+	pthread_mutex_lock(&philo->meal_check);
 	philo->time_last_meal = ft_get_time();
+	pthread_mutex_unlock(&philo->meal_check);
 	print_order(philo, "is eating", \
 		time_diff(ft_get_time(), philo->table->time_start));
-	pthread_mutex_unlock(philo->table->meal_check);
 	ft_usleep(philo->table->time_to_eat, philo->table);
 	pthread_mutex_unlock(philo->l_fork);
 	pthread_mutex_unlock(philo->r_fork);

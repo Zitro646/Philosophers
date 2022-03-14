@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 15:07:49 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/02/16 14:59:53 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/03/14 12:22:03 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct philo
 	t_table			*table;
 	pthread_mutex_t	*r_fork;
 	pthread_mutex_t	*l_fork;
+	pthread_mutex_t	meal_check;
 	useconds_t		time_now;
 	useconds_t		time_last_meal;
 	int				times_has_eaten;

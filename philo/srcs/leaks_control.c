@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 13:02:37 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/02/15 13:33:29 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/03/14 13:16:35 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	leaks_control(t_philo *data)
 	free(table->forks);
 	free(table->print);
 	free(table->live);
-	free(table->meal_check);
 	free(table);
 	while (i < max)
 	{

@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 13:35:27 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/02/14 14:20:22 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/03/14 13:41:37 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,24 @@ int	error_control(int argc, char **argv)
 {
 	if (argc < 5 || argc > 6)
 	{
-		printf("No se han introducido los datos correctamente\n");
+		printf("Error not enougth args\n");
 		return (0);
 	}
 	if (ft_atoi(argv[1]) <= 0)
 	{
-		printf("No hay suficientes filosofos para comer\n");
+		printf("Error not enougth philos\n");
 		return (-1);
 	}
 	if (ft_atoi(argv[2]) <= 0 || ft_atoi(argv[3]) <= 0 || ft_atoi(argv[4]) <= 0)
 	{
-		printf("El tiempo no esta bien indicado\n");
+		printf("Time is not well specified\n");
 		return (-1);
 	}
 	if (argc == 6)
 	{
 		if (ft_atoi(argv[5]) <= 0)
 		{
-			printf("El numero de veces que come es erroneo\n");
+			printf("Wrong number of times to eat\n");
 			return (-1);
 		}
 	}

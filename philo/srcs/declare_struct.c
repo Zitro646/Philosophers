@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 15:41:13 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/02/15 18:52:54 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/03/14 13:15:55 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ t_philo	*declare_philos(int n_philos, t_table *table)
 			philo[i].l_fork = &fork[n_philos - 1];
 		else
 			philo[i].l_fork = &fork[i - 1];
+		pthread_mutex_init(&philo[i].meal_check, NULL);
 		philo[i].r_fork = &fork[i];
 		philo[i].id = i + 1;
 		philo[i].table = table;
@@ -78,8 +79,6 @@ t_philo	*declare_struct(int argc, char **argv)
 	pthread_mutex_init(table->print, NULL);
 	table->live = ft_calloc(sizeof(pthread_mutex_t), 1);
 	pthread_mutex_init(table->live, NULL);
-	table->meal_check = ft_calloc(sizeof(pthread_mutex_t), 1);
-	pthread_mutex_init(table->meal_check, NULL);
 	philos = declare_philos(table[0].number_of_philosophers, table);
 	return (philos);
 }
