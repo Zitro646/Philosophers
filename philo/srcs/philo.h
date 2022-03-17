@@ -6,7 +6,7 @@
 /*   By: mortiz-d <mortiz-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/02 15:07:49 by mortiz-d          #+#    #+#             */
-/*   Updated: 2022/03/14 12:22:03 by mortiz-d         ###   ########.fr       */
+/*   Updated: 2022/03/16 18:53:20 by mortiz-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct table
 	int				all_eaten;
 	int				number_of_philosophers;
 	int				number_of_times_must_eat;
+	int				threads_started;
 	useconds_t		time_start;
 	useconds_t		time_to_die;
 	useconds_t		time_to_eat;
@@ -31,6 +32,7 @@ typedef struct table
 	pthread_mutex_t	*forks;
 	pthread_mutex_t	*print;
 	pthread_mutex_t	*meal_check;
+	pthread_mutex_t	*start;
 	pthread_mutex_t	*live;
 
 }t_table;
@@ -59,7 +61,9 @@ t_philo		*declare_struct(int argc, char **argv);
 void		start_thread(t_philo *data);
 void		*metodo_filosofo(void *arg);
 int			everybody_ate(t_philo	*data);
-int			check_keep_eating(t_philo *philo);
 void		leaks_control(t_philo *data);
 int			error_control(int argc, char **argv);
+void		monitor(t_philo *data);
+useconds_t	time_diff(useconds_t present, useconds_t past);
+int			ft_check_philo_alive(t_philo *philo, int i);
 #endif

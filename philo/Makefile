@@ -8,7 +8,7 @@ RESET = "\033[1;0m"
 # VARIABLES #
 NAME = philo
 CC = gcc
-CFLAGS = -Wall -Werror -Wextra #-fsanitize=address -g3
+CFLAGS = -Wall -Werror -Wextra #-fsanitize=address -g3 #-fsanitize=thread
 CFLAGS += -I ./$(INC_PATH) -I ./$(LIBFT_PATH)
 
 # PATHs #
@@ -19,7 +19,7 @@ INC_PATH    = includes -pthread
 OBJ_PATH    = objects
 
 # SOURCES #
-SRC =   main.c  declare_struct.c start_thread.c thread_method.c leaks_control.c error_control.c
+SRC =   main.c  declare_struct.c start_thread.c thread_method.c leaks_control.c error_control.c monitor.c
 
 SRC_INCLUDE = ft_atoi.c ft_calloc.c ft_usleep.c ft_get_time.c
 
